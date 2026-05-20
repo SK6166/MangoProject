@@ -1,0 +1,14 @@
+{% extends "layout.html" %}
+{% block content %}
+<h2>Aggregation Report: Books by Genre</h2>
+<table class="table table-striped">
+    <tr><th>Genre</th><th>Total Books</th><th>Average Year</th></tr>
+    {% for item in data %}
+    <tr>
+        <td>{{ item._id }}</td>
+        <td>{{ item.total_books }}</td>
+        <td>{{ "%.1f"|format(item.avg_year) }}</td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}

@@ -1,0 +1,83 @@
+{% extends "layout.html" %}
+{% block content %}
+<h2>📝 Authors Management</h2>
+
+<div class="card mb-4 shadow-sm">
+    <div class="card-header bg-success text-white">
+        <strong>➕ Add New Author</strong>
+    </div>
+    <div class="card-body">
+        <form action="/authors/add" method="post" class="row g-3">
+            <div class="col-md-4">
+                <input type="text" name="name" placeholder="Full Name" required class="form-control">
+            </div>
+            <div class="col-md-3">
+                <input type="text" name="country" placeholder="Country" class="form-control">
+            </div>
+            <div class="col-md-2">
+                <input type="number" name="birth_year" placeholder="Birth Year" class="form-control">
+            </div>
+            <div class="col-md-3">
+                <button type="submit" class="btn btn-success w-100">Add Author</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="card shadow-sm">
+    <div class="card-header bg-secondary text-white">
+        <strong>📋 Authors List</strong>
+    </div>
+    <div class="card-body">
+        <table class="table table-hover table-bordered">
+            <thead class="table-dark">
+                <tr>
+                    <th>Name</th>
+                    <th>Country</th>
+                    <th>Birth Year</th>
+                    <th>Books Written</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for author in authors %}
+                <tr>
+                    <form action="/authors/update/{{ author._id }}" method="post">
+                        <td>
+                            <input type="text" name="name" value="{{ author.name }}" 
+                                   class="form-control form-control-sm" style="min-width: 150px;">
+                        </td>
+                        <td>
+                            <input type="text" name="country" value="{{ author.country }}" 
+                                   class="form-control form-control-sm" style="min-width: 120px;">
+                        </td>
+                        <td>
+                            <input type="number" name="birth_year" 
+                                   value="{{ author.birth_year if author.birth_year else '' }}" 
+                                   class="form-control form-control-sm" style="width: 100px;">
+                        </td>
+                        <td class="text-center">
+                            <span class="badge bg-primary">{{ author.book_count }}</span>
+                        </td>
+                        <td>
+                            <button type="submit" class="btn btn-sm btn-warning">✏️ Update</button>
+                            <a href="/authors/delete/{{ author._id }}" 
+                               class="btn btn-sm btn-danger"
+                               onclick="return confirm('Delete author and ALL their books?')">
+                                🗑️ Delete
+                            </a>
+                        </td>
+                    </form>
+                </tr>
+                {% else %}
+                <tr>
+                    <td colspan="5" class="text-center text-muted py-3">
+                        No authors yet. Add your first author above!
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

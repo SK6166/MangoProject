@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+{% block content %}
+<h2>Simple Search (Uses Text Index)</h2>
+<form method="post" class="row g-3 mb-4">
+    <div class="col-md-6">
+        <input type="text" name="search" class="form-control" placeholder="Text search...">
+    </div>
+    <div class="col-md-3">
+        <input type="number" name="year_from" class="form-control" placeholder="Year from...">
+    </div>
+    <div class="col-md-3">
+        <button type="submit" class="btn btn-primary">Search</button>
+    </div>
+</form>
+
+{% for book in results %}
+    <div class="card mb-2">
+        <div class="card-body">
+            <h5>{{ book.title }} ({{ book.year }})</h5>
+            <p>Genre: {{ book.genre }}</p>
+        </div>
+    </div>
+{% else %}
+    <p>No results found.</p>
+{% endfor %}
+{% endblock %}

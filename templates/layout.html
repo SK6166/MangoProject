@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>📚 Library Database Manager</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body { padding-bottom: 40px; background-color: #f8f9fa; }
+        .navbar { box-shadow: 0 2px 4px rgba(0,0,0,.1); }
+        .card { border-radius: 10px; }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-4">
+        <div class="container">
+            <a class="navbar-brand" href="/">📚 Library System</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/books">📕 Книги</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/authors">✍️ Авторы</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            📊 Отчёты по книгам
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="/report/books_by_genre">📈 По жанрам</a></li>
+                            <li><a class="dropdown-item" href="/report/books_by_year">📅 По годам</a></li>
+                            <li><a class="dropdown-item" href="/report/books_availability">✅ Доступность</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            📊 Отчёты по авторам
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="/report/authors_activity">👥 Активность</a></li>
+                            <li><a class="dropdown-item" href="/report/authors_by_country">🌍 По странам</a></li>
+                            <li><a class="dropdown-item" href="/report/authors_by_era">📅 По эпохам</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/search">🔍 Поиск</a>
+                    </li>
+                </ul>
+                <span class="navbar-text text-light">
+                    MongoDB Demo
+                </span>
+            </div>
+        </div>
+    </nav>
+    
+    <div class="container">
+        {% block content %}{% endblock %}
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
