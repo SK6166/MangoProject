@@ -1,12 +1,12 @@
 <!-- templates/report_authors_by_era.html -->
 {% extends "layout.html" %}
 {% block content %}
-<h2>📅 Авторы по эпохам</h2>
+<h2>Авторы по эпохам</h2>
 <p class="text-muted">Простой запрос (фильтрация) + Агрегация (связь с книгами)</p>
 
 <div class="card mb-4 shadow-sm">
     <div class="card-header bg-warning text-dark">
-        <strong>🔍 Фильтр авторов (Простой запрос)</strong>
+        <strong>Фильтр авторов (Простой запрос)</strong>
     </div>
     <div class="card-body">
         <form method="post" class="row g-3">
@@ -36,7 +36,7 @@
             </div>
             <div class="col-md-2">
                 <label class="form-label">&nbsp;</label>
-                <button type="submit" class="btn btn-warning w-100">🔍 Поиск</button>
+                <button type="submit" class="btn btn-warning w-100">Поиск</button>
             </div>
             <div class="col-md-1">
                 <label class="form-label">&nbsp;</label>
@@ -49,7 +49,7 @@
 {% if summary %}
 <div class="card mb-4 shadow-sm">
     <div class="card-header bg-success text-white">
-        <strong>📊 Результаты (Агрегация с книгами)</strong>
+        <strong>Результаты (Агрегация с книгами)</strong>
     </div>
     <div class="card-body">
         <p><strong>Найдено авторов:</strong> <span class="badge bg-primary">{{ summary.total_authors }}</span></p>
@@ -88,7 +88,7 @@
 {% if results %}
 <div class="card shadow-sm">
     <div class="card-header bg-secondary text-white">
-        <strong>📋 Детальный список (Простой запрос)</strong>
+        <strong>Детальный список (Простой запрос)</strong>
     </div>
     <div class="card-body">
         <table class="table table-bordered table-hover">

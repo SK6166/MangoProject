@@ -2,8 +2,8 @@
 {% block content %}
 <div class="row mt-4">
     <div class="col-12">
-        <h1 class="mb-4">📚 Library Database Manager</h1>
-        <p class="lead text-muted">MongoDB project: CRUD + Aggregation + Simple Queries + User Roles</p>
+        <h1 class="mb-4">MangoDB</h1>
+        <p class="lead text-muted">Библиотека MangoDB</p>
     </div>
 </div>
 
@@ -13,9 +13,9 @@
         <div class="card h-100 shadow-sm">
             <div class="card-body text-center">
                 <div class="display-1 mb-3">📕</div>
-                <h3 class="card-title">Books</h3>
-                <p class="card-text text-muted">Manage your book collection</p>
-                <a href="/books" class="btn btn-primary mt-3">Manage Books →</a>
+                <h3 class="card-title">Книги</h3>
+                <p class="card-text text-muted">Менеджмент книг</p>
+                <a href="/books" class="btn btn-primary mt-3">Управлять книгами</a>
             </div>
         </div>
     </div>
@@ -25,9 +25,9 @@
         <div class="card h-100 shadow-sm">
             <div class="card-body text-center">
                 <div class="display-1 mb-3">✍️</div>
-                <h3 class="card-title">Authors</h3>
-                <p class="card-text text-muted">Manage author profiles</p>
-                <a href="/authors" class="btn btn-success mt-3">Manage Authors →</a>
+                <h3 class="card-title">Авторы</h3>
+                <p class="card-text text-muted">Менеджмент авторов</p>
+                <a href="/authors" class="btn btn-success mt-3">Управлять авторами</a>
             </div>
         </div>
     </div>
@@ -37,20 +37,20 @@
         <div class="card h-100 shadow-sm">
             <div class="card-body text-center">
                 <div class="display-1 mb-3">📊</div>
-                <h3 class="card-title">Reports</h3>
-                <p class="card-text text-muted">3 types of reports</p>
+                <h3 class="card-title">Отчеты</h3>
+                <p class="card-text text-muted">Отчеты</p>
                 <div class="d-grid gap-2 mt-3">
                     <a href="/report/genres" class="btn btn-outline-primary">
-                        📈 Genres (Aggregation)
+                        Агрегация
                     </a>
                     <a href="/report/authors_activity" class="btn btn-outline-success">
-                        👥 Authors Activity ($lookup)
+                        Отчет по авторам
                     </a>
                     <a href="/report/books_by_year" class="btn btn-outline-info">
-                        📅 Books by Year (Simple + Agg)
+                        Книга по году
                     </a>
                     <a href="/search" class="btn btn-outline-warning">
-                        🔍 Simple Search
+                        Поиск
                     </a>
                 </div>
             </div>

@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 {% block content %}
-<h2>Simple Search (Uses Text Index)</h2>
+<h2>Поиск</h2>
 <form method="post" class="row g-3 mb-4">
     <div class="col-md-6">
         <input type="text" name="search" class="form-control" placeholder="Text search...">
@@ -9,7 +9,7 @@
         <input type="number" name="year_from" class="form-control" placeholder="Year from...">
     </div>
     <div class="col-md-3">
-        <button type="submit" class="btn btn-primary">Search</button>
+        <button type="submit" class="btn btn-primary">Искать</button>
     </div>
 </form>
 
@@ -21,6 +21,6 @@
         </div>
     </div>
 {% else %}
-    <p>No results found.</p>
+    <p>Ничего не найдено.</p>
 {% endfor %}
 {% endblock %}

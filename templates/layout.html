@@ -12,26 +12,27 @@
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-4">
         <div class="container">
-            <a class="navbar-brand" href="/">📚 Library System</a>
+            <a class="navbar-brand" href="/">MangoDB</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav me-auto">
+                    {% if session.user %}
                     <li class="nav-item">
-                        <a class="nav-link" href="/books">📕 Книги</a>
+                        <a class="nav-link" href="/books">Книги</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/authors">✍️ Авторы</a>
+                        <a class="nav-link" href="/authors">Авторы</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
                             📊 Отчёты по книгам
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="/report/books_by_genre">📈 По жанрам</a></li>
-                            <li><a class="dropdown-item" href="/report/books_by_year">📅 По годам</a></li>
-                            <li><a class="dropdown-item" href="/report/books_availability">✅ Доступность</a></li>
+                            <li><a class="dropdown-item" href="/report/books_by_genre">По жанрам</a></li>
+                            <li><a class="dropdown-item" href="/report/books_by_year">По годам</a></li>
+                            <li><a class="dropdown-item" href="/report/books_availability">Доступность</a></li>
                         </ul>
                     </li>
                     <li class="nav-item dropdown">
@@ -39,23 +40,40 @@
                             📊 Отчёты по авторам
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="/report/authors_activity">👥 Активность</a></li>
-                            <li><a class="dropdown-item" href="/report/authors_by_country">🌍 По странам</a></li>
-                            <li><a class="dropdown-item" href="/report/authors_by_era">📅 По эпохам</a></li>
+                            <li><a class="dropdown-item" href="/report/authors_activity">Активность</a></li>
+                            <li><a class="dropdown-item" href="/report/authors_by_country">По странам</a></li>
+                            <li><a class="dropdown-item" href="/report/authors_by_era">По эпохам</a></li>
                         </ul>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/search">🔍 Поиск</a>
+                        <a class="nav-link" href="/search">Поиск</a>
                     </li>
+                    {% endif %}
                 </ul>
                 <span class="navbar-text text-light">
-                    MongoDB Demo
+                    {% if session.user %}
+                        {{ session.role }} | 
+                        <a href="/logout" class="text-light">Выйти</a>
+                    {% else %}
+                        <a href="/login" class="text-light">Войти</a>
+                    {% endif %}
                 </span>
             </div>
         </div>
     </nav>
     
     <div class="container">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+                        {{ message }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+        
         {% block content %}{% endblock %}
     </div>
     

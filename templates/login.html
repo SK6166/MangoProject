@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>📚 Library System - Вход</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body { background-color: #f8f9fa; }
+        .login-container { max-width: 500px; margin-top: 100px; }
+        .user-card { cursor: pointer; transition: all 0.3s; }
+        .user-card:hover { transform: translateY(-2px); box-shadow: 0 4px 8px rgba(0,0,0,0.2); }
+        .user-card.selected { border: 3px solid #0d6efd; background-color: #e7f1ff; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="login-container mx-auto">
+            <div class="card shadow">
+                <div class="card-header bg-dark text-white text-center">
+                    <h4 class="mb-0">MangoDB</h4>
+                </div>
+                <div class="card-body">
+                    <h5 class="text-center mb-4">Авторизация</h5>
+                    
+                    {% with messages = get_flashed_messages(with_categories=true) %}
+                        {% if messages %}
+                            {% for category, message in messages %}
+                                <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+                                    {{ message }}
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                                </div>
+                            {% endfor %}
+                        {% endif %}
+                    {% endwith %}
+                    
+                    <form method="post" id="loginForm">
+                        <div class="mb-3">
+                            <label class="form-label">Выберите пользователя:</label>
+                            <div class="d-grid gap-2">
+                                <div class="user-card card p-3" data-username="admin_user" data-password="admin123" onclick="selectUser(this, 'admin')">
+                                    <div class="d-flex align-items-center">
+                                        <span class="fs-3 me-3">👑</span>
+                                        <div>
+                                            <strong>Администратор</strong>
+                                            <br><small class="text-muted">Полный доступ</small>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="user-card card p-3" data-username="read_write_user" data-password="rw123" onclick="selectUser(this, 'editor')">
+                                    <div class="d-flex align-items-center">
+                                        <span class="fs-3 me-3">✏️</span>
+                                        <div>
+                                            <strong>Редактор</strong>
+                                            <br><small class="text-muted">Чтение и запись</small>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="user-card card p-3" data-username="read_only_user" data-password="read123" onclick="selectUser(this, 'viewer')">
+                                    <div class="d-flex align-items-center">
+                                        <span class="fs-3 me-3">👁️</span>
+                                        <div>
+                                            <strong>Зритель</strong>
+                                            <br><small class="text-muted">Только чтение</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="username" class="form-label">Имя пользователя:</label>
+                            <input type="text" class="form-control" id="username" name="username" required placeholder="Введите имя пользователя">
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="password" class="form-label">Пароль:</label>
+                            <input type="password" class="form-control" id="password" name="password" required placeholder="Введите пароль">
+                        </div>
+                        
+                        <input type="hidden" name="user_type" id="userType">
+                        
+                        <div class="d-grid">
+                            <button type="submit" class="btn btn-primary btn-lg">Войти</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="card-footer">
+                    <div class="text-muted small">
+                        <strong>Подсказка (тестовые учетные данные):</strong>
+                        <ul class="mb-0 mt-1">
+                            <li>Администратор: <code>admin_user</code> / <code>admin123</code></li>
+                            <li>Редактор: <code>read_write_user</code> / <code>rw123</code></li>
+                            <li>Зритель: <code>read_only_user</code> / <code>read123</code></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        function selectUser(card, userType) {
+            document.querySelectorAll('.user-card').forEach(c => c.classList.remove('selected'));
+            card.classList.add('selected');
+            
+            const username = card.getAttribute('data-username');
+            const password = card.getAttribute('data-password');
+            
+            document.getElementById('username').value = username;
+            document.getElementById('password').value = password;
+            document.getElementById('userType').value = userType;
+        }
+    </script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

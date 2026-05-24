@@ -1,8 +1,8 @@
 {% extends "layout.html" %}
 {% block content %}
-<h2>Aggregation Report: Books by Genre</h2>
+<h2>Отчет книги по жанрам(Агрегация)</h2>
 <table class="table table-striped">
-    <tr><th>Genre</th><th>Total Books</th><th>Average Year</th></tr>
+    <tr><th>Жанр</th><th>Всего книг</th><th>Средний год</th></tr>
     {% for item in data %}
     <tr>
         <td>{{ item._id }}</td>
